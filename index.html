@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+
+    <!-- Link Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Hati */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: floatUp 4s linear infinite;
+        }
+
+        /* Animasi Hati */
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="text-4xl font-bold text-white mb-4">Happy Valentine's Day, Sayang ❤️</h1>
+        <p class="text-lg text-white mb-6">Kamu adalah alasan kenapa aku masih semangat sampai detik ini 🌸</p>
+        <button onclick="showModal()" class="bg-red-500 text-white px-6 py-2 rounded-full text-lg shadow-lg hover:bg-red-600 transition">
+            Klik Aku ❤️
+        </button>
+    </div>
+
+    <!-- Modal Custom -->
+    <div id="customModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <p class="text-lg font-semibold text-gray-700">Terima kasih, sayangku cintaku ❤️</p>
+            <p class="text-lg font-semibold text-gray-700">Jangan pernah bosen ya ama akuu 🥺😘 </p>
+            <button onclick="closeModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk Hati dan Modal -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️"; 
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+
+            // Atur posisi hati secara acak di bawah layar
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.bottom = "-20px";
+
+            // Hapus hati setelah animasi selesai
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        // Buat hati setiap 500ms
+        setInterval(createHeart, 500);
+
+        // Fungsi untuk menampilkan modal
+        function showModal() {
+            document.getElementById("customModal").classList.remove("hidden");
+        }
+
+        // Fungsi untuk menyembunyikan modal
+        function closeModal() {
+            document.getElementById("customModal").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
